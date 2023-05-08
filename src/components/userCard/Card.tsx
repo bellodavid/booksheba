@@ -7,10 +7,9 @@ import {Divider} from 'react-native-paper';
 import {CardDivider} from '@rneui/base/dist/Card/Card.Divider';
 import {Icon} from '@rneui/base';
 
-const userImage =
-  'https://wwd.com/wp-content/uploads/2022/09/Alex-Hormozi..jpg';
-
 const Card = () => {
+  const userImage =
+    'https://wwd.com/wp-content/uploads/2022/09/Alex-Hormozi..jpg';
   return (
     <View style={styles.container}>
       <TouchableOpacity>
@@ -30,17 +29,23 @@ const Card = () => {
               marginTop: 10,
               width: 130,
               alignSelf: 'center',
-              marginBottom: 5,
+              marginBottom: 10,
             }}
           />
-          <View>
+          <View
+            style={{
+              justifyContent: 'space-around',
+              flexDirection: 'row',
+              marginLeft: 20,
+              marginRight: 20,
+            }}>
             <Text style={styles.title}>Alex Homorzi</Text>
             <Icon
               type="antdesign"
-              name="heart"
+              name="hearto"
               color="white"
+              style={{marginTop: 2}}
               size={13}
-            
             />
           </View>
         </View>

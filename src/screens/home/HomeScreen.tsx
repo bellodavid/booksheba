@@ -3,7 +3,7 @@ import React from 'react';
 import {styles} from './style';
 import Card from '../../components/userCard/Card';
 
-const Home = () => {
+const HomeScreen = () => {
   return (
     <ImageBackground
       source={{
@@ -12,10 +12,10 @@ const Home = () => {
       style={styles.container}>
       <Card />
       <Card />
-      
+      <Card />
       <Text>Home</Text>
     </ImageBackground>
   );
 };
 
-export default Home;
+export default HomeScreen;
