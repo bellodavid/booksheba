@@ -1,15 +1,21 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { styles } from './style'
-import Card from '../../components/userCard/Card'
+import {View, Text, ImageBackground} from 'react-native';
+import React from 'react';
+import {styles} from './style';
+import Card from '../../components/userCard/Card';
 
 const Home = () => {
   return (
-    <View style={styles.container}>
-      <Card/>
+    <ImageBackground
+      source={{
+        uri: 'https://wallpaperaccess.com/full/8055908.jpg',
+      }}
+      style={styles.container}>
+      <Card />
+      <Card />
+      
       <Text>Home</Text>
-    </View>
-  )
-}
+    </ImageBackground>
+  );
+};
 
-export default Home
+export default Home;
