@@ -28,6 +28,9 @@ const BottomNavigator = () => {
           paddingBottom: 8,
           paddingTop: 10,
         },
+        tabBarLabelStyle: {
+          display: "none"
+        },
         tabBarIcon: ({focused, color, size}) => {
           if (route.name === 'Home') {
             return (

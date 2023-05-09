@@ -6,13 +6,22 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Divider} from 'react-native-paper';
 import {CardDivider} from '@rneui/base/dist/Card/Card.Divider';
 import {Icon} from '@rneui/base';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
+interface userPageProp {
+  navigate: (routeName: string) => void;
+}
 const Card = () => {
+  const navigation = useNavigation<userPageProp>();
+
+  const handleUserPage = () => {
+    navigation.navigate('UserPage');
+  };
   const userImage =
     'https://wwd.com/wp-content/uploads/2022/09/Alex-Hormozi..jpg';
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleUserPage}>
         <View>
           <Image
             source={{uri: userImage}}
