@@ -4,3 +4,7 @@ export type buttonProp = {
     icon: String
 }
 
+export type UserCArdProp = {
+    id: number,
+    name: String,
+}

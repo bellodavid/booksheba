@@ -8,14 +8,24 @@ import SearchScreen from '../screens/search/SearchScreen';
 import FavoriteScreen from '../screens/favorite/FavoriteScreen';
 import HomeScreen from '../screens/home/HomeScreen';
 
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+import UserScreen from '../screens/user/UserScreen';
+
+export type RootStackParamList = {
+  AppHome: String;
+  UserPage: String;
+};
+
 export type stackParamList = {
   Home: undefined;
   Search: undefined;
   Favorite: String;
 };
 
-const BottomNavigator = () => {
+const BottomNavigator = () => { 
   const Tab = createBottomTabNavigator<stackParamList>();
+  const RootStack = createNativeStackNavigator<RootStackParamList>();
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -29,7 +39,7 @@ const BottomNavigator = () => {
           paddingTop: 10,
         },
         tabBarLabelStyle: {
-          display: "none"
+          display: 'none',
         },
         tabBarIcon: ({focused, color, size}) => {
           if (route.name === 'Home') {
@@ -81,6 +91,7 @@ const BottomNavigator = () => {
         name="Favorite"
         component={FavoriteScreen}
       />
+      
     </Tab.Navigator>
   );
 };

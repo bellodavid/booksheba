@@ -7,15 +7,16 @@ import {Divider} from 'react-native-paper';
 import {CardDivider} from '@rneui/base/dist/Card/Card.Divider';
 import {Icon} from '@rneui/base';
 import {useNavigation, useRoute} from '@react-navigation/native';
-
+import {UserCArdProp} from '../../interfaces';
 interface userPageProp {
   navigate: (routeName: string) => void;
 }
+
 const Card = () => {
   const navigation = useNavigation<userPageProp>();
 
-  const handleUserPage = () => {
-    navigation.navigate('UserPage');
+  const handleUserPage = ({id, name}: UserCArdProp) => {
+    navigation.navigate('UserPage', {id: id});
   };
   const userImage =
     'https://wwd.com/wp-content/uploads/2022/09/Alex-Hormozi..jpg';
