@@ -1,24 +1,29 @@
 import {View, Text, Dimensions} from 'react-native';
 import {useEffect, useState} from 'react';
-import {WebView} from 'react-native-webview';
 import Pdf from 'react-native-pdf';
 import {ActivityIndicator} from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const WIDTH = Dimensions.get('window').width;
+const PAGE_WIDTH = Dimensions.get('window').width;
+const PDF_URI = 'http://samples.leanpub.com/thereactnativebook-sample.pdf';
 
 interface pageProps {
   page: number;
   totalPages: number;
-  setPageNumber: (pageNumber: string) => void;
+}
+
+interface PDFViewProps {
+  source: {uri: string};
+  currentPage: number;
+  onCurrentPageChanged: (page: number) => void;
 }
 
 const Reading = () => {
-  const [pageNumber, setPageNumber] = useState<pageProps>();
+  const [currentPage, setCurrentPge] = useState<pageProps>();
   const [lastSession, setLastSession] = useState<number>();
   const [lastPage, setLastPage] = useState<number>(1); // set initial value to 1
-  const source = {
-    uri: 'http://samples.leanpub.com/thereactnativebook-sample.pdf',
+  const pdfSource = {
+    uri: PDF_URI,
     cache: true,
   };
   // Store the last page number
@@ -60,21 +65,20 @@ const Reading = () => {
       <Pdf
         page={lastPage}
         maxScale={2}
-        source={source}
+        source={pdfSource}
         trustAllCerts={false}
         onPageChanged={(page, totalPages) => {
-          setPageNumber({page, totalPages, setPageNumber});
+          setCurrentPge({page, totalPages});
           setLastSession(page);
         }}
         renderActivityIndicator={() => (
           <ActivityIndicator color="black" size="large" />
         )}
-        style={{flex: 1, width: WIDTH, backgroundColor: 'gray'}}
+        style={{flex: 1, width: PAGE_WIDTH, backgroundColor: 'gray'}}
       />
       <View style={{height: 30}}>
-        {/* <View style={{ backgroundColor: "black", height: 2, width: WIDTH, borderRadius: 20 }}></View> */}
         <Text style={{top: 4, color: 'black', fontSize: 15}}>
-          {pageNumber?.page}/{pageNumber?.totalPages}
+          {currentPage?.page}/{currentPage?.totalPages}
         </Text>
       </View>
     </View>
