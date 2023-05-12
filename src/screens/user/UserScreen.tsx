@@ -1,15 +1,16 @@
-import {View, Text, ImageBackground} from 'react-native';
+import {View, Text, ImageBackground, ScrollView} from 'react-native';
 import React from 'react';
 import {styles} from './style';
 import UserPageCard from '../../components/userCard/UserPageCard';
+import UserProfile from '../../components/userprofile/UserProfile';
 
 const UserScreen = () => {
-    const backgroundImage = 'https://wallpaperaccess.com/full/8055908.jpg'
+  const backgroundImage = 'https://wallpaperaccess.com/full/8055908.jpg';
   return (
-  <View style={styles.container}>
-   
-    <UserPageCard/>
-    </View>
+    <ScrollView contentContainerStyle={[styles.container]}>
+      <UserPageCard />
+      <UserProfile />
+    </ScrollView>
   );
 };
 

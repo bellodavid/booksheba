@@ -40,17 +40,17 @@ export const styles = StyleSheet.create({
   },
   button: {
     borderWidth: 2,
-    borderColor: "#FFBC00",
+    borderColor: '#FFBC00',
     borderRadius: 50,
-    justifyContent: "space-between",
-    flexDirection: "row",
+    justifyContent: 'space-between',
+    flexDirection: 'row',
     paddingHorizontal: 20,
     marginVertical: 10,
     padding: 10,
-    top: 10
+    top: 10,
+    marginRight: 10,
   },
   buttonText: {
-    color: "#FFBC00",
-    fontWeight: "600",
-  }
+    fontWeight: '600',
+  },
 });

@@ -5,18 +5,33 @@ import {
   TouchableOpacity,
   Pressable,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {styles} from './userPageCardStyle';
 import {useNavigation} from '@react-navigation/native';
 import {Icon} from '@rneui/themed';
 import {Image} from '@rneui/base';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+
 const UserPageCard = () => {
   const navigation = useNavigation();
-
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isLiked, setisLiked] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(false);
   const handleBack = () => {
     navigation.goBack();
   };
 
+  const handleSubscription = () => {
+    setIsSubscribed(!isSubscribed);
+  };
+
+  const handleLiked = () => {
+    setisLiked(!isLiked);
+  };
+
+  const handleBookmarked = () => {
+    setIsBookmarked(!isBookmarked);
+  }
   const bannerImage =
     'https://drscdn.500px.org/photo/124049133/m%3D900/d254129f1d7aaf6a7e415d628083820e';
 
@@ -53,17 +68,20 @@ const UserPageCard = () => {
         <View style={{flexDirection: 'row'}}>
           <Icon
             type="antdesign"
-            name="hearto"
+            name={isLiked ? 'heart' : 'hearto'}
             color="white"
             style={{marginRight: 20}}
             size={20}
+            onPress={handleLiked}
           />
-          <Icon
-            type="feather"
-            name="bookmark"
+          <Fontisto
+          
+            name={isBookmarked? "bookmark" : "bookmark-alt"}
             color="white"
             style={{marginRight: 20}}
             size={20}
+            onPress={handleBookmarked}
+
           />
         </View>
       </View>
@@ -87,10 +105,27 @@ const UserPageCard = () => {
           business to six locations. He then sold his locations to transition to
           the turnaround business.
         </Text>
-        <Text style={{color: "white", top: 10}}>SUBSCRIPTION</Text>
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>SUBSCRIBE</Text>
-          <Text style={styles.buttonText}>FOR FREE</Text>
+        <Text style={{color: 'white', top: 10}}>SUBSCRIPTION</Text>
+        <Pressable
+          onPress={handleSubscription}
+          style={[
+            styles.button,
+            {backgroundColor: isSubscribed ? '#FFBC00' : 'transparent'},
+          ]}>
+          <Text
+            style={[
+              styles.buttonText,
+              {color: isSubscribed ? 'black' : '#FFBC00'},
+            ]}>
+            {isSubscribed ? 'SUBSCRIBE' : 'SUBSCRIBED'}
+          </Text>
+          <Text
+            style={[
+              styles.buttonText,
+              {color: isSubscribed ? 'black' : '#FFBC00'},
+            ]}>
+            FOR FREE
+          </Text>
         </Pressable>
       </View>
     </View>
