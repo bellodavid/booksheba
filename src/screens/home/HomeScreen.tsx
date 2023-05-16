@@ -1,7 +1,7 @@
 import {View, Text, ImageBackground} from 'react-native';
 import React from 'react';
 import {styles} from './style';
-import Card from '../../components/userCard/Card';
+import Card from '../../components/userCard/UserCard';
 
 const HomeScreen = () => {
   return (

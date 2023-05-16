@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-booksheba-staging-91600-authRole",
+      "UnauthRoleArn": "arn:aws:iam::080442204705:role/amplify-booksheba-staging-91600-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::080442204705:role/amplify-booksheba-staging-91600-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-booksheba-staging-91600-deployment",
+      "UnauthRoleName": "amplify-booksheba-staging-91600-unauthRole",
+      "StackName": "amplify-booksheba-staging-91600",
+      "StackId": "arn:aws:cloudformation:us-east-1:080442204705:stack/amplify-booksheba-staging-91600/463d9de0-f3ca-11ed-9c5f-0e1d9cb34d0d",
+      "AmplifyAppId": "d3bkc2xpdxnr59"
+    },
+    "categories": {
+      "auth": {
+        "booksheba": {}
+      }
+    }
+  }
+}

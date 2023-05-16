@@ -1,25 +1,32 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import {styles} from './style';
 import React from 'react';
-import {BlurView} from '@react-native-community/blur';
-import LinearGradient from 'react-native-linear-gradient';
-import {Divider} from 'react-native-paper';
 import {CardDivider} from '@rneui/base/dist/Card/Card.Divider';
 import {Icon} from '@rneui/base';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {UserCArdProp} from '../../interfaces';
+
 interface userPageProp {
   navigate: (routeName: string) => void;
 }
 
 const Card = () => {
-  const navigation = useNavigation<userPageProp>();
+  const backgroundUri =
+    'https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2014/01/new-york-city-usa.jpg?ssl=1';
 
+  const navigation = useNavigation<userPageProp>();
   const handleUserPage = ({id, name}: UserCArdProp) => {
     navigation.navigate('UserPage', {id: id});
   };
   const userImage =
     'https://wwd.com/wp-content/uploads/2022/09/Alex-Hormozi..jpg';
+
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={handleUserPage}>
