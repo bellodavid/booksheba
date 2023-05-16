@@ -1,11 +1,19 @@
-import {View, Text, Button, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
-import {buttonProp} from '../../interfaces';
+import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import {buttons} from '../../data/Buttons';
+import {useNavigation} from '@react-navigation/native';
 import {styles} from './style';
-const LoginButton = ({title, icon}: buttonProp) => {
+
+interface LoginButtonProps {
+  title: string;
+  icon: string;
+  name: string;
+}
+
+const LoginButton = ({title, icon, name}: LoginButtonProps) => {
+  const navigation = useNavigation();
   const [buttonPressed, setButtonPressed] = useState(false);
+
   const handlePressIn = () => {
     setButtonPressed(true);
   };
@@ -13,15 +21,31 @@ const LoginButton = ({title, icon}: buttonProp) => {
   const handlePressOut = () => {
     setButtonPressed(false);
   };
+
+  const handleButtonPress = () => {
+    // Handle button press here
+    if (title === 'LOGIN') {
+      // Perform login action
+    } else {
+      // Perform other action
+    }
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
-        style={[styles.buttonContainer, title==="LOGIN" && styles.loginColor, buttonPressed && styles.buttonPressed]}>
+        onPress={handleButtonPress}
+        style={[
+          styles.buttonContainer,
+          title === 'LOGIN' && styles.loginColor,
+          buttonPressed && styles.buttonPressed,
+        ]}>
         <Icon name={icon} size={20} style={{marginHorizontal: 8}} />
-
-        <Text style={[styles.text, title==="LOGIN" && styles.loginText]}>{title}</Text>
+        <Text style={[styles.text, title === 'LOGIN' && styles.loginText]}>
+          {name}
+        </Text>
       </TouchableOpacity>
     </View>
   );
