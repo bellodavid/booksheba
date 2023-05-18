@@ -44,7 +44,7 @@ const LoginButton = ({title, icon, name}: LoginButtonProps) => {
         ]}>
         <Icon name={icon} size={20} style={{marginHorizontal: 8}} />
         <Text style={[styles.text, title === 'LOGIN' && styles.loginText]}>
-          {name}
+          {title}
         </Text>
       </TouchableOpacity>
     </View>

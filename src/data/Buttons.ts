@@ -1,3 +1,11 @@
+export interface ButtonData {
+  id: number;
+  title: string;
+  icon: string;
+  name: string;
+}
+
+
 export const buttons = [
   {
     id: 1,

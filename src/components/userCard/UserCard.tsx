@@ -16,13 +16,21 @@ interface userPageProp {
   navigate: (routeName: string) => void;
 }
 
-const Card = () => {
+const Card = ({user}: any) => {
   const backgroundUri =
     'https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2014/01/new-york-city-usa.jpg?ssl=1';
 
   const navigation = useNavigation<userPageProp>();
   const handleUserPage = ({id, name}: UserCArdProp) => {
-    navigation.navigate('UserPage', {id: id});
+    navigation.navigate('UserPage', {
+      id: user.id,
+      handle: user.handle,
+      name: user.name,
+      bio: user.bio,
+      avatar: user.avatar,
+      coverImage: user.coverImage,
+      
+    });
   };
   const userImage =
     'https://wwd.com/wp-content/uploads/2022/09/Alex-Hormozi..jpg';
@@ -56,7 +64,7 @@ const Card = () => {
               marginLeft: 20,
               marginRight: 20,
             }}>
-            <Text style={styles.title}>Alex Homorzi</Text>
+            <Text style={styles.title}>{user.name}</Text>
             <Icon
               type="antdesign"
               name="hearto"

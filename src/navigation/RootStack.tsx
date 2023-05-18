@@ -21,7 +21,6 @@ const RootStack = () => {
   return (
     <RootStack.Navigator>
       <RootStack.Group screenOptions={{headerShown: false}}>
-        {/* <RootStack.Screen name="WelcomeScreen" component={WelcomeScreen} /> */}
         <RootStack.Screen name="AppHome" component={HomeScreen} />
         <RootStack.Screen name="UserPage" component={UserScreen} />
         <RootStack.Screen name="Reading" component={Reading} />

@@ -7,13 +7,14 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './userPageCardStyle';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {Icon} from '@rneui/themed';
 import {Image} from '@rneui/base';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
 const UserPageCard = () => {
   const navigation = useNavigation();
+  const route = useRoute();
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isLiked, setisLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -31,15 +32,13 @@ const UserPageCard = () => {
 
   const handleBookmarked = () => {
     setIsBookmarked(!isBookmarked);
-  }
-  const bannerImage =
-    'https://drscdn.500px.org/photo/124049133/m%3D900/d254129f1d7aaf6a7e415d628083820e';
+  };
 
-  const userImage =
-    'https://wwd.com/wp-content/uploads/2022/09/Alex-Hormozi..jpg';
   return (
     <View>
-      <ImageBackground style={styles.bannerImage} source={{uri: bannerImage}}>
+      <ImageBackground
+        style={styles.bannerImage}
+        source={{uri: `${route.params.coverImage}`}}>
         <View style={styles.container}>
           <TouchableOpacity onPress={handleBack}>
             <Icon
@@ -52,7 +51,9 @@ const UserPageCard = () => {
           </TouchableOpacity>
         </View>
         <View style={{position: 'absolute', top: 20, marginLeft: 50}}>
-          <Text style={[styles.name, {fontWeight: 'bold'}]}>Alex Hormozi</Text>
+          <Text style={[styles.name, {fontWeight: 'bold'}]}>
+            @{route.params.handle.toLowerCase()}
+          </Text>
           <Text style={[styles.name, {top: 5}]}>1.5K Posts 50K Likes 20K</Text>
         </View>
       </ImageBackground>
@@ -64,7 +65,10 @@ const UserPageCard = () => {
           alignItems: 'flex-end',
           justifyContent: 'space-between',
         }}>
-        <Image source={{uri: userImage}} style={styles.userImage} />
+        <Image
+          source={{uri: `${route.params.avatar}`}}
+          style={styles.userImage}
+        />
         <View style={{flexDirection: 'row'}}>
           <Icon
             type="antdesign"
@@ -75,13 +79,11 @@ const UserPageCard = () => {
             onPress={handleLiked}
           />
           <Fontisto
-          
-            name={isBookmarked? "bookmark" : "bookmark-alt"}
+            name={isBookmarked ? 'bookmark' : 'bookmark-alt'}
             color="white"
             style={{marginRight: 20}}
             size={20}
             onPress={handleBookmarked}
-
           />
         </View>
       </View>
@@ -93,17 +95,13 @@ const UserPageCard = () => {
             fontWeight: '600',
             marginVertical: 5,
           }}>
-          Alex Homorzi
+          {route.params.name}
         </Text>
         <Text style={{color: 'gray', fontSize: 15, marginBottom: 10}}>
-          @alexhomorzi
+          @{route.params.handle}
         </Text>
         <Text style={{color: 'white', fontSize: 12, lineHeight: 20}}>
-          Alex Hormozi is a first-generation Iranian-American entrepreneur,
-          investor, and philanthropist. In 2013, he started his first brick &
-          mortar business. Within three years, he successfully scaled his
-          business to six locations. He then sold his locations to transition to
-          the turnaround business.
+          {route.params.bio}
         </Text>
         <Text style={{color: 'white', top: 10}}>SUBSCRIPTION</Text>
         <Pressable

@@ -1,20 +1,53 @@
 import {View, Text, StatusBar} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import RootStack from './src/navigation/RootStack';
-import {WebView} from 'react-native-webview';
-import {Amplify} from 'aws-amplify';
+import {Amplify, Hub} from 'aws-amplify';
 import awsExports from './src/aws-exports';
 Amplify.configure(awsExports);
 import {Authenticator, ThemeProvider} from '@aws-amplify/ui-react-native';
-import WelcomeScreen from './src/screens/welcome/WelcomeScreen';
-import HomeScreen from './src/screens/home/HomeScreen';
+import {DataStore} from 'aws-amplify';
+import {User} from './src/models';
+import {API} from 'aws-amplify';
+
+const CreateUserMutation = `
+mutation createUser($input: CreateUserInput!){
+  createUser(input: $input) {
+  id
+  name
+  handle
+  bio
+  }
+  }`;
 
 const App = () => {
+  useEffect(() => {
+    const removeListener = Hub.listen('auth', async data => {
+      if (data.payload.event === 'signIn') {
+        const userInfo = data.payload.data.attributes;
+        // console.log(JSON.stringify(userInfo, null, 2));
+
+        const newUser = {
+          id: userInfo.sub,
+          name: userInfo.name,
+          handle: userInfo.nickname,
+        };
+        await API.graphql({
+          query: CreateUserMutation,
+          variables: {input: newUser},
+        });
+        console.log('user signed in to the database');
+      }
+    });
+
+    return () => removeListener();
+  }, []);
   return (
     <Authenticator.Provider>
       <NavigationContainer>
-       <WelcomeScreen/>
+        <Authenticator>
+          <RootStack />
+        </Authenticator>
       </NavigationContainer>
     </Authenticator.Provider>
   );
