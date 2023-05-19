@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
          height: height,
          flexGrow: 1,
          width: "100%",
-         alignItems: 'center'
+         alignItems: 'center',
+       
 
     }
 })

@@ -40,7 +40,7 @@ const Card = ({user}: any) => {
       <TouchableOpacity onPress={handleUserPage}>
         <View>
           <Image
-            source={{uri: userImage}}
+            source={{uri: `${user.avatar}`}}
             style={{
               height: 100,
               width: 100,

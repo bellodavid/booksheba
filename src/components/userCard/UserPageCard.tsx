@@ -122,7 +122,7 @@ const UserPageCard = () => {
               styles.buttonText,
               {color: isSubscribed ? 'black' : '#FFBC00'},
             ]}>
-            FOR FREE
+            {isSubscribed ? 'FOR FREE' : '$0'}
           </Text>
         </Pressable>
       </View>
