@@ -3,16 +3,21 @@ import React, {useEffect, useState} from 'react';
 import BookCard from '../books/BookCard';
 import {DataStore} from 'aws-amplify';
 import {Post} from '../../models';
+import {AppContext} from '../../../AppContext';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const numColumns = 3;
 const UserProfile = () => {
+  const {userId} = React.useContext(AppContext);
+ 
   const [books, setBooks] = useState([]);
   useEffect(() => {
-    DataStore.query(Post).then(setBooks);
-    console.log(JSON.stringify(books, null, 2));
-  }, []);
+    const fetchPosts = async () => {
+     await DataStore.query(Post, (post) => post.userID.eq(userId)).then(setBooks)
+    };
+    fetchPosts();
+  }, [userId]);
   const renderFooter = () => <View style={{margin: 20}} />;
 
   return (

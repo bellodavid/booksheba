@@ -7,16 +7,14 @@ import UserProfile from '../../components/userprofile/UserProfile';
 const UserScreen = () => {
   const backgroundImage = 'https://wallpaperaccess.com/full/8055908.jpg';
   return (
-    <ScrollView >
-    <View>
-      <View style={[styles.container]}>
-        <UserPageCard />
-        <UserProfile />
-        <View style={{bottom: 20}}>
-
+    <ScrollView>
+      <View>
+        <View style={[styles.container]}>
+          <UserPageCard />
+          <UserProfile />
+          <View style={{bottom: 20}}></View>
         </View>
       </View>
-    </View>
     </ScrollView>
   );
 };

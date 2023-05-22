@@ -18,12 +18,17 @@ const BookCard = ({book}) => {
       <TouchableOpacity>
         <Image
           source={{uri: `${book.image}`}}
-          style={{height: 170, width: 100, top: 10,}}
+          style={{height: 170, width: 100, top: 10}}
         />
         <View>
           <Text
-           
-            style={{color: 'white', top: 10, marginBottom: 10, fontSize: 10, marginTop: 5}}>
+            style={{
+              color: 'white',
+              top: 10,
+              marginBottom: 10,
+              fontSize: 10,
+              marginTop: 5,
+            }}>
             {book.title}
           </Text>
         </View>
