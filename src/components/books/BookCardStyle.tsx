@@ -3,8 +3,9 @@ const HEIGHT = Dimensions.get('window').height;
 
 export const styles = StyleSheet.create({
     container: {
-     
-        marginLeft: 30, 
+       
+        marginLeft: 20, 
         top: 10,
+       
     }
 })

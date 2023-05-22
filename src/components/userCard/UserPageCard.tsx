@@ -4,6 +4,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   Pressable,
+  ScrollView, 
 } from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './userPageCardStyle';
@@ -11,6 +12,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {Icon} from '@rneui/themed';
 import {Image} from '@rneui/base';
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import UserProfile from '../userprofile/UserProfile';
 
 const UserPageCard = () => {
   const navigation = useNavigation();
@@ -126,6 +128,7 @@ const UserPageCard = () => {
           </Text>
         </Pressable>
       </View>
+    
     </View>
   );
 };

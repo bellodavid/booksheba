@@ -18,7 +18,6 @@ export const styles = StyleSheet.create({
     marginLeft: 0,
   },
   container: {
-    flex: 1,
     color: 'white',
     paddingLeft: 0,
     width: WIDTH,

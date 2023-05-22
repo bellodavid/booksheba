@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  ScrollView
- 
-} from 'react-native';
+import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import {styles} from './BookCardStyle';
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
@@ -19,16 +12,20 @@ const BookCard = ({book}) => {
   const handleClick = () => {
     navigation.navigate('Reading');
   };
-  
+
   return (
     <ScrollView style={styles.container}>
-      <TouchableOpacity >
+      <TouchableOpacity>
         <Image
           source={{uri: `${book.image}`}}
-          style={{height: 100, width: 100, top: 10}}
+          style={{height: 170, width: 100, top: 10,}}
         />
         <View>
-          <Text style={{color: 'white', top: 10}}>{book.title}</Text>
+          <Text
+           
+            style={{color: 'white', top: 10, marginBottom: 10, fontSize: 10, marginTop: 5}}>
+            {book.title}
+          </Text>
         </View>
       </TouchableOpacity>
     </ScrollView>
