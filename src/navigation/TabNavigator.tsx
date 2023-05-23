@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Icon} from '@rneui/themed';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import SearchScreen from '../screens/search/SearchScreen';
+import SearchScreen from '../screens/search';
 import FavoriteScreen from '../screens/favorite/FavoriteScreen';
 import HomeScreen from '../screens/home/HomeScreen';
 

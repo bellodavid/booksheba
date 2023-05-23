@@ -13,13 +13,12 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {UserCArdProp} from '../../interfaces';
 import {AppContext} from '../../../AppContext';
 
-
 interface userPageProp {
   navigate: (routeName: string) => void;
 }
 
 const Card = ({user}: any) => {
-  const { setUserId } = React.useContext(AppContext);
+  const {setUserId, isLiked} = React.useContext(AppContext);
   const backgroundUri =
     'https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2014/01/new-york-city-usa.jpg?ssl=1';
 

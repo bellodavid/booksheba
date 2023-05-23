@@ -10,6 +10,7 @@ import {DataStore} from 'aws-amplify';
 import {User} from './src/models';
 import {AppContext} from './AppContext';
 import {API} from 'aws-amplify';
+import TabNavigation from './src/components/navigation/TabNavigation';
 
 const CreateUserMutation = `
 mutation createUser($input: CreateUserInput!){
@@ -23,6 +24,7 @@ mutation createUser($input: CreateUserInput!){
 
 const App = () => {
   const [userId, setUserId] = useState(null);
+  const [ isLiked, setIsLiked ] = useState(false)
   useEffect(() => {
     const removeListener = Hub.listen('auth', async data => {
       if (data.payload.event === 'signIn') {
@@ -51,9 +53,12 @@ const App = () => {
           <AppContext.Provider
             value={{
               userId,
+              isLiked,
               setUserId: (userId: string) => setUserId(userId),
+              setIsLiked: (isLiked: boolean) => setIsLiked(isLiked),
             }}>
             <RootStack />
+            <TabNavigation/>
           </AppContext.Provider>
         </Authenticator>
       </NavigationContainer>

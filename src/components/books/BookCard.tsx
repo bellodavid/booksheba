@@ -20,7 +20,7 @@ const BookCard = ({book}) => {
           source={{uri: `${book.image}`}}
           style={{height: 170, width: 100, top: 10}}
         />
-        <View>
+        <View style={{height: 40}}>
           <Text
             style={{
               color: 'white',

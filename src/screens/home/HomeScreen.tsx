@@ -26,6 +26,7 @@ const HomeScreen = () => {
           return <Card user={item} key={index} />;
         }}
       />
+      
     </ImageBackground>
   );
 };

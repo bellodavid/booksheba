@@ -4,21 +4,20 @@ import {
   ImageBackground,
   TouchableOpacity,
   Pressable,
-  ScrollView, 
+  ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {styles} from './userPageCardStyle';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {Icon} from '@rneui/themed';
 import {Image} from '@rneui/base';
-import Fontisto from 'react-native-vector-icons/Fontisto';
-import UserProfile from '../userprofile/UserProfile';
+import {AppContext} from '../../../AppContext';
 
 const UserPageCard = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [isLiked, setisLiked] = useState(false);
+  const {isLiked, setIsLiked} = React.useContext(AppContext);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const handleBack = () => {
     navigation.goBack();
@@ -29,13 +28,25 @@ const UserPageCard = () => {
   };
 
   const handleLiked = () => {
-    setisLiked(!isLiked);
+    if (isSubscribed) {
+      alert('You need to subscribe to like this post');
+      setIsLiked(false);
+    } else if (!isSubscribed) {
+      setIsLiked(true);
+    }
   };
 
   const handleBookmarked = () => {
     setIsBookmarked(!isBookmarked);
   };
+  useEffect(() => {
+    if (isSubscribed) {
+      setIsLiked(false);
+    } else if (!isSubscribed) {
 
+      setIsLiked(true);
+    }
+  }, [isSubscribed]);
   return (
     <View>
       <ImageBackground
@@ -80,13 +91,7 @@ const UserPageCard = () => {
             size={20}
             onPress={handleLiked}
           />
-          <Fontisto
-            name={isBookmarked ? 'bookmark' : 'bookmark-alt'}
-            color="white"
-            style={{marginRight: 20}}
-            size={20}
-            onPress={handleBookmarked}
-          />
+      
         </View>
       </View>
       <View style={{marginLeft: 15}}>
@@ -128,7 +133,6 @@ const UserPageCard = () => {
           </Text>
         </Pressable>
       </View>
-    
     </View>
   );
 };
