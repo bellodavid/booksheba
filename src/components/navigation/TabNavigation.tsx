@@ -23,6 +23,9 @@ const TabNavigation = () => {
   const handleSearch = () => {
     navigation.navigate('Search');
   };
+  const handleContact = () => {
+    navigation.navigate('Contact');
+  }
   return (
     <View style={styles.container}>
       <View
@@ -44,7 +47,8 @@ const TabNavigation = () => {
           color="white"
           onPress={handleSearch}
         />
-        <MaterialCommunityIcons name="email-outline" color="white" size={20} />
+        <MaterialCommunityIcons name="email-outline" 
+        onPress={handleContact} color="white" size={20} />
       </View>
     </View>
   );

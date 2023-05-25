@@ -45,7 +45,6 @@ const Search = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <View></View>
         <FlatList
           data={posts}
           renderItem={({item}) => {

@@ -3,7 +3,7 @@ import React from 'react';
 import {Icon, Input} from '@rneui/themed';
 
 interface SearchBoxProp {
-  searchQuery: string
+  searchQuery: string;
   handleSearch: () => void;
 }
 

@@ -7,6 +7,7 @@ import Reading from '../screens/Reading';
 import HomeScreen from '../screens/home/HomeScreen';
 import WelcomeScreen from '../screens/welcome/WelcomeScreen';
 import Search from '../screens/search';
+import Contact from '../screens/Contact';
 
 export type RootStackParamList = {
   AppHome: String;
@@ -15,6 +16,7 @@ export type RootStackParamList = {
   HomeScreen: String;
   WelcomeScreen: String;
   Search: String;
+  Contact: String;
 };
 
 const RootStack = () => {
@@ -27,6 +29,7 @@ const RootStack = () => {
         <RootStack.Screen name="UserPage" component={UserScreen} />
         <RootStack.Screen name="Reading" component={Reading} />
         <RootStack.Screen name="Search" component={Search} />
+        <RootStack.Screen name="Contact" component={Contact} />
       </RootStack.Group>
     </RootStack.Navigator>
   );
