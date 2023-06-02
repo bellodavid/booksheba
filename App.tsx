@@ -5,7 +5,7 @@ import RootStack from './src/navigation/RootStack';
 import {Amplify, Hub} from 'aws-amplify';
 import awsExports from './src/aws-exports';
 Amplify.configure(awsExports);
-import {Authenticator, ThemeProvider} from '@aws-amplify/ui-react-native';
+import {Authenticator} from '@aws-amplify/ui-react-native';
 import {DataStore} from 'aws-amplify';
 import {User} from './src/models';
 import {AppContext} from './AppContext';
@@ -41,11 +41,14 @@ const App = () => {
           variables: {input: newUser},
         });
         console.log('user signed in to the database');
+        console.log(newUser)
       }
+     
     });
 
     return () => removeListener();
   }, []);
+  
   return (
     <Authenticator.Provider>
       <NavigationContainer>

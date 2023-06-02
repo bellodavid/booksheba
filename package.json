@@ -23,6 +23,7 @@
         "amazon-cognito-identity-js": "^6.2.0",
         "aws-amplify": "^5.2.1",
         "core-js": "^3.30.2",
+        "emailjs-com": "^3.2.0",
         "react": "18.2.0",
         "react-native": "0.71.7",
         "react-native-blob-util": "^0.17.3",
